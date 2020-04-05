@@ -8,6 +8,18 @@
 
 <ion-content [fullscreen]="true">
  
+  <ion-card *ngFor="let message of getMessages()">
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+    <ion-card-content *ngIf="message.imageUrl">
+      <ion-img src="{{message.imageUrl}}"></ion-img>
+    </ion-card-content>
+
+    <ion-card-header>
+      <ion-card-subtitle>{{message.text}}</ion-card-subtitle>
+      <ion-card-title>{{message.from}}</ion-card-title>
+    </ion-card-header> 
+
+    
+
+  </ion-card>
 </ion-content>
