@@ -6,8 +6,25 @@
   </ion-toolbar>
 </ion-header>
 
+<!--Form-->
 <ion-content [fullscreen]="true">
-  
+  <ion-card>
+    <ion-card-content>
+  <ion-item>
+    <ion-label position="stacked">Friends Name:</ion-label>
+    <ion-input [(ngModel)]= "friend.name" name="name"></ion-input>
+  </ion-item>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+  <ion-button (click)="onSave()" class="main-button" expand="block" color="medium">Submit Friend</ion-button>
+</ion-card-content>
+</ion-card>
+    
+<!--List-->
+<ion-list>
+  <ion-item *ngFor = "let friend of myFriends">
+  <ion-icon name="person-outline"></ion-icon>{{friend.name}}
+</ion-item>
+
+</ion-list>
+  
 </ion-content>

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { DataService } from '../services/data.service';
 import { Message } from '../models/message';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-tab1',
@@ -13,13 +14,23 @@ export class Tab1Page {
   displayMessage: Message[];
   
 
-  constructor(private data: DataService) {
+  constructor(private data: DataService, private shared: SharedService) {
 
     this.homework();
     data.getAllMessages().subscribe(list => {
 
-     
-      this.displayMessage = list.sort((left, right) => {
+     var filtered = [];
+     for(let i = 0; i <list.length; i++){
+
+      var m = list[i];
+      if(m.to == "General" || m.to == shared.userName || m.from == shared.userName){
+
+        filtered.push(m);
+      }
+     }
+
+
+      this.displayMessage = filtered.sort((left, right) => {
         // return -1 when left should go first
         // return 1 when the right should go first
         //return 0 if they are the same
