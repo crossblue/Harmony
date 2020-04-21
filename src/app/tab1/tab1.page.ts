@@ -175,14 +175,14 @@ export class Tab1Page {
     
    solve4(data){
 
+    var total = 0;
     data.forEach((d) => {
     
-    var total = 0.0;
     var num = d.balance.replace("$","").replace(",","");
     var pnum = parseFloat(num);
-    var sum = total =+ pnum;
-     
-    console.log(sum);
+    var sum = total += pnum;
+    console.log(`${sum++}`);
+    
   });
   
       
