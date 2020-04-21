@@ -140,17 +140,54 @@ export class Tab1Page {
   
     console.log(data);
     //1 - Sort items by Age Desc
-    this.solve1(data);
+    //this.solve1(data);
     //2 - Sort items by age Asc
-    //3 - Print only actives
+    //this.solve2(data);
+    //3 - Print only active
+    this.solve3(data);
     //4 - Sum all the balances
+    this.solve4(data);
   }
     solve1(data){
+      data.sort((a,b) => {
 
+        return b.age - a.age;
+      });
     }
 
+    solve2(data){
+      data.sort((a,b) => {
+
+       return a.age - b.age;
+      });
+
+    }
+    solve3(data){
+   
+      data.forEach((d) => {
+        if(d.isActive === true){
+          console.log(`${d.isActive}`);
+        }
+        
+    });
+     
+   }
+    
+   solve4(data){
+
+    data.forEach((d) => {
+    
+    var total = 0.0;
+    var num = d.balance.replace("$","").replace(",","");
+    var pnum = parseFloat(num);
+    var sum = total =+ pnum;
+     
+    console.log(sum);
+  });
+  
+      
   }
 
 
 
-
+}
